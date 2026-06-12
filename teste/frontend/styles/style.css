@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#fundo{
+    height: 165vh;
+    width: 100vw;
+    background-color: rgb(51, 57, 73);
+}
+
+#topo{
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(35, 37, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgb(34, 35, 49)
+}
+
+#titulo{
+    font-size: 28px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;   
+}
+
+#cabecalho{
+    width: 80%;
+    height: 20vh;
+    margin-top: 20px;   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 270px;
+}
+
+.card{
+    width: 15vw;
+    height: 180px;
+    background-color: rgb(35, 37, 43);
+    border-radius: 8px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 5px;
+    box-shadow: -10px 8px 15px rgb(34, 35, 49);
+}
+
+.texto{
+    margin-top: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;;
+}
+
+.info{
+    width: 90%;
+    height: 100px;
+    background-color: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#graficos{
+    width: 80vw;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 280px;
+}
+
+.grafico {
+    background-color: rgb(35, 37, 43);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: -10px 8px 15px rgb(34, 35, 49);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#sidebar{
+    width: 10vw;
+    height: 100vh;
+    background-color: #1d2127;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.links{
+    color: white;
+    font-size: 25px;
+    margin-bottom: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 30px;
+    text-decoration: none;
+    text-shadow: 0 5px 5px rgb(114, 114, 114);
+    font-weight: 600;
+}
+
+#welcome{
+    width: 80%;
+    height: 15%;
+    background-color: rgb(34, 35, 49);
+    margin-bottom: 50px;
+    border-radius: 15px;
+    box-shadow: 0 15px 15px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+}
+
+#welcome h4{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#welcome i{
+    margin-bottom: 20px;
+}
+
+a:hover{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform: scale(1.2);
+}
+
+#teste1{
+    color: white;
+}

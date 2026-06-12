@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatório Sensores - Temperatura</title>
+
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div id="sidebar">
+
+
+    <div id="welcome">
+
+        <img src="/teste/teste-removebg-preview.png" width="100px">
+
+        <h4>Smart Factory</h4>
+
+    </div>
+
+
+
+    <a class="fa-solid fa-house"
+    style="
+    font-size:40px;
+    color:white;
+    margin-bottom:50px;
+    text-decoration:none"
+    href="index.html">
+    </a>
+
+
+
+
+    <a class="links" href="temperatura.html">
+
+        Temperatura
+
+        <i class="fa-solid fa-temperature-quarter"></i>
+
+    </a>
+
+
+
+    <a class="links" href="pressao.html">
+
+        Pressão
+
+        <i class="fa-brands fa-hotjar"></i>
+
+    </a>
+
+
+
+    <a class="links" href="vibracao.html">
+
+        Vibração
+
+        <i class="fa-solid fa-wave-square"></i>
+
+    </a>
+
+
+
+    <a class="links" href="vazao.html">
+
+        Vazão
+
+        <i class="fa-solid fa-water"></i>
+
+    </a>
+
+
+</div>
+
+
+
+
+
+<div id="fundo">
+
+
+    <div id="topo">
+
+        <div id="titulo">
+
+            Monitoramento Temperatura
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div id="cabecalho">
+
+
+
+        <div class="card">
+
+            <div class="texto">
+
+                Equipamentos
+
+                <i class="fa-solid fa-gears"></i>
+
+            </div>
+
+
+            <div class="info" id="totalEquipamentos">
+
+                0
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="card">
+
+
+            <div class="texto">
+
+                Sensores
+
+                <i class="fa-solid fa-video"></i>
+
+            </div>
+
+
+            <div class="info" id="totalSensores">
+
+                0
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="card">
+
+
+            <div class="texto">
+
+                Alertas
+
+                <i class="fa-solid fa-exclamation"></i>
+
+            </div>
+
+
+            <div class="info" id="totalAlertas">
+
+                0
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="card">
+
+
+            <div class="texto">
+
+                Críticos
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+
+            <div class="info" id="totalCriticos">
+
+                0
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div id="graficos">
+
+
+
+        <div class="grafico">
+
+            Temperatura ao longo do tempo
+
+            <canvas id="graficoTemperatura" width="900"></canvas>
+
+        </div>
+
+
+
+
+
+        <div class="grafico">
+
+            Distribuição de alertas
+
+            <canvas id="graficoAlertas" width="500"></canvas>
+
+        </div>
+
+
+
+
+
+        <div class="grafico">
+
+            Média por equipamento
+
+            <canvas id="graficoMedia" width="900"></canvas>
+
+        </div>
+
+
+
+
+
+        <div class="grafico">
+
+            Status dos equipamentos
+
+            <canvas id="graficoEquipamentos" width="500"></canvas>
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<script src="../scripts/temperatura.js"></script>
+
+
+</body>
+
+
+</html>

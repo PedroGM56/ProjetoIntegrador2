@@ -1,6 +1,11 @@
+import {connection} from '../../scripts/backend/src/database/db.js'
+
 Chart.defaults.color = 'white';
 Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.07)';
 
+lista = connection.query('SELECT  DATE(data_hora_leitura) AS data, AVG(valor_leitura) AS valor_medio FROM leitura GROUP BY DATE(data_hora_leitura) ORDER BY data;')
+
+console.log(lista)
 const ctx1 = document.getElementById('teste1');
 
         const myChart = new Chart(ctx1, {
