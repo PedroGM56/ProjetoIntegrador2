@@ -3,204 +3,276 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Factory</title>
+    <title>Smart Factory</title>
 
+    <link rel="stylesheet" href="../styles/style.css">
 
-<link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 </head>
 
 
 <body>
 
-<div id="sidebar">
 
-    <div id="welcome">
+    <div id="sidebar">
 
-        <img src="/teste/teste-removebg-preview.png" width="100px">
 
-        <h4>Smart Factory</h4>
+        <div id="welcome">
+
+            <img src="/teste/teste-removebg-preview.png" width="100px">
+
+            <h4>
+                Smart Factory
+            </h4>
+
+        </div>
+
+
+        <a class="fa-solid fa-house"
+            style="font-size:40px;color:white;margin-bottom:50px;text-decoration:none"
+            href="home.html">
+        </a>
+
+
+        <a class="links" href="temperatura.html">
+
+            Temperatura
+
+            <i class="fa-solid fa-temperature-quarter"></i>
+
+        </a>
+
+
+        <a class="links" href="pressao.html">
+
+            Pressão
+
+            <i class="fa-brands fa-hotjar"></i>
+
+        </a>
+
+
+        <a class="links" href="vibracao.html">
+
+            Vibração
+
+            <i class="fa-solid fa-wave-square"></i>
+
+        </a>
+
+
+        <a class="links" href="vazao.html">
+
+            Vazão
+
+            <i class="fa-solid fa-water"></i>
+
+        </a>
+
 
     </div>
 
-    <a class="fa-solid fa-house"
-    style="font-size:40px;color:white;margin-bottom:50px;text-decoration:none"
-    href="home.html"></a>
 
-    <a class="links" href="temperatura.html">
-        Temperatura
-        <i class="fa-solid fa-temperature-quarter"></i>
-    </a>
+    <div id="fundo">
 
-    <a class="links" href="pressao.html">
-        Pressão
-        <i class="fa-brands fa-hotjar"></i>
-    </a>
 
-    <a class="links" href="vibracao.html">
-        Vibração
-        <i class="fa-solid fa-wave-square"></i>
-    </a>
+        <div id="topo">
 
-    <a class="links" href="vazao.html">
-        Vazão
-        <i class="fa-solid fa-water"></i>
-    </a>
+            <div id="titulo">
 
-</div>
+                Monitoramento Geral
 
-<div id="fundo">
+            </div>
 
-<div id="topo">
+        </div>
 
-<div id="titulo">
 
-Monitoramento Geral
+        <div id="cabecalho">
 
-</div>
 
-</div>
+            <div class="card">
 
-<div id="cabecalho">
 
-<div class="card">
+                <div class="texto">
 
-<div class="texto">
-Equipamentos
-<i class="fa-solid fa-gears"></i>
-</div>
+                    Equipamentos
 
+                    <i class="fa-solid fa-gears"></i>
 
-<div class="info" id="totalEquipamentos">
-0
-</div>
+                </div>
 
-</div>
 
-<div class="card">
+                <div class="info" id="totalEquipamentos">
 
-<div class="texto">
+                    0
 
-Sensores
+                </div>
 
-<i class="fa-solid fa-video"></i>
 
-</div>
+            </div>
 
-<div class="info" id="totalSensores">
-0
-</div>
 
-</div>
+            <div class="card">
 
-<div class="card">
 
-<div class="texto">
+                <div class="texto">
 
-Alertas
+                    Sensores
 
-<i class="fa-solid fa-triangle-exclamation"></i>
+                    <i class="fa-solid fa-video"></i>
 
-</div>
+                </div>
 
-<div class="info" id="totalAlertas">
-0
-</div>
 
-</div>
+                <div class="info" id="totalSensores">
 
-<div class="card">
+                    0
 
-<div class="texto">
+                </div>
 
-Críticos
 
-<i class="fa-solid fa-circle-exclamation"></i>
+            </div>
 
-</div>
 
-<div class="info" id="totalCriticos">
-0
-</div>
+            <div class="card">
 
-</div>
 
-</div>
+                <div class="texto">
 
-<div id="graficos">
+                    Alertas
 
-<div class="grafico">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
 
-<h3>Status Equipamentos</h3>
+                </div>
 
-<canvas id="graficoStatus"
-width="500"
-height="400">
 
-</canvas>
+                <div class="info" id="totalAlertas">
 
-</div>
+                    0
 
-<div class="grafico">
+                </div>
 
-<h3>Alertas por Sensor</h3>
 
-<canvas id="graficoAlertas"
-width="500"
-height="400">
+            </div>
 
-</canvas>
 
-</div>
+            <div class="card">
 
-</div>
 
-<div class="grafico"
-style="margin-top:30px">
+                <div class="texto">
 
-<h3>Últimos Eventos</h3>
+                    Críticos
 
-<table id="tabelaEventos">
+                    <i class="fa-solid fa-circle-exclamation"></i>
 
+                </div>
 
-<thead>
 
-<tr>
+                <div class="info" id="totalCriticos">
 
-<th>Equipamento</th>
+                    0
 
-<th>Sensor</th>
+                </div>
 
-<th>Nível</th>
 
-<th>Data</th>
+            </div>
 
 
-</tr>
+        </div>
 
-</thead>
 
-<tbody>
+        <div id="graficos">
 
-</tbody>
 
-</table>
+            <div class="grafico">
 
-</div>
 
-</div>
+                <h3>
+                    Status Equipamentos
+                </h3>
 
-<script src="../scripts/home.js"></script>
+
+                <canvas id="graficoStatus"
+                    width="500"
+                    height="400">
+                </canvas>
+
+
+            </div>
+
+
+            <div class="grafico">
+
+
+                <h3>
+                    Alertas por Sensor
+                </h3>
+
+                <canvas id="graficoAlertas"
+                    width="500"
+                    height="400">
+                </canvas>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="tabela-container">
+
+            <h3>
+                Últimos Eventos
+            </h3>
+        
+        
+            <table id="tabelaEventos">
+        
+                <thead>
+        
+                    <tr>
+        
+                        <th>
+                            Equipamento
+                        </th>
+        
+                        <th>
+                            Sensor
+                        </th>
+        
+                        <th>
+                            Nível
+                        </th>
+        
+                        <th>
+                            Data
+                        </th>
+        
+                    </tr>
+        
+                </thead>
+        
+        
+                <tbody>
+        
+                </tbody>
+        
+        
+            </table>
+        
+        
+        </div>
+
+    <script src="../scripts/home.js"></script>
 
 </body>
 

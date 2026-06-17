@@ -1,5 +1,6 @@
 const API = "http://localhost:3000/dashboard/Vazao";
 
+Chart.register(ChartDataLabels);
 Chart.defaults.color = 'white';
 Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.07)';
 
@@ -63,55 +64,81 @@ async function carregarDados(){
 function graficoPressao(dados){
 
     new Chart(
-
         document.getElementById("graficoTemperatura"),
-
         {
 
-        type:"line",
+            type:"line",
 
-        data:{
+            data:{
 
-            labels:
+                labels: dados.map(item => formatarData(item.data)),
 
-            dados.map(item=>item.data),
+                datasets:[{
 
-            datasets:[{
+                    label:"Vazão",
 
-                label:"Pressão",
+                    data: dados.map(item => Number(item.valor).toFixed(2)),
 
-                data:
+                    borderWidth:2,
 
-                dados.map(item=>item.valor),
+                    tension:0.3,
 
-                borderWidth:2
+                    pointRadius:3,
 
-            }]
+                    borderColor:"#00e5a8",
 
-        },
+                    backgroundColor:"rgba(0,229,168,0.2)"
 
-        options:{
+                }]
 
-            responsive:false
+            },
 
-        }
+
+            options:{
+
+                responsive:false,
+
+                plugins:{
+
+                    legend:{
+
+                        display:true
+
+                    }
+
+                },
+
+
+                scales:{
+
+                    x:{
+
+                        ticks:{
+
+                            maxTicksLimit:8
+
+                        }
+
+                    }
+
+                }
+
+            }
 
         }
 
     );
 
 }
-
 //Gráfico Pizza
 
 function graficoAlertas(dados){
 
     dados = dados.filter(item =>
-
         item.nivel_alerta !== null &&
         item.nivel_alerta !== ""
-
     );
+
 
     new Chart(
 
@@ -127,23 +154,69 @@ function graficoAlertas(dados){
 
             dados.map(item=>item.nivel_alerta),
 
+
             datasets:[{
 
                 data:
 
                 dados.map(item=>item.quantidade),
 
-                borderWidth:1
+
+                borderWidth:1,
+
+                backgroundColor:[
+
+                    "#22c55e",
+                    "#f59e0b",
+                    "#ef4444"
+
+                ]
 
             }]
 
         },
 
+
         options:{
 
-            responsive:false
+            responsive:false,
+
+
+            plugins:{
+
+                legend:{
+
+                    display:true
+
+                },
+
+
+                datalabels:{
+
+                    color:"white",
+
+
+                    font:{
+
+                        size:16,
+
+                        weight:"bold"
+
+                    },
+
+
+                    formatter:function(valor){
+
+                        return valor;
+
+                    }
+
+                }
+
+            }
 
         }
+
 
         }
 
@@ -172,13 +245,14 @@ function graficoMedia(dados){
 
             datasets:[{
 
-                label:"Média Pressão",
+                label:"Média Vazão",
 
                 data:
 
-                dados.map(item=>item.media),
+                dados.map(item=>Number(item.media).toFixed(2)),
 
-                borderWidth:1
+                borderWidth:1,
+                backgroundColor:"#38bdf8"
 
             }]
 
@@ -219,7 +293,12 @@ function graficoEquipamentos(dados){
 
                 dados.map(item=>item.quantidade),
 
-                borderWidth:1
+                borderWidth:1,
+                backgroundColor:[
+                    "#22c55e", 
+                    "#64748b", 
+                    "#f97316" 
+                ]
 
             }]
 
@@ -233,6 +312,17 @@ function graficoEquipamentos(dados){
         }
 
     );
+
+}
+
+function formatarData(data){
+
+    const d = new Date(data);
+
+    return d.toLocaleDateString("pt-BR", {
+        day:"2-digit",
+        month:"short"
+    });
 
 }
 

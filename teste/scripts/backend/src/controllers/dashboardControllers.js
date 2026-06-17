@@ -1,6 +1,5 @@
 import { connection } from "../database/db.js";
 
-
 // Executa consultas sem parâmetros
 function executarConsultas(consultas, res) {
 
