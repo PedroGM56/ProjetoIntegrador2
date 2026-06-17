@@ -1,19 +1,10 @@
-import express from "express"
+import express from "express";
 
-import {
-    temperatura
+import { dashboardSensor, dashboardHome } from "../controllers/dashboardControllers.js";
 
-} from "../controllers/dashboardControllers.js"
+const router = express.Router();
 
+router.get('/home', dashboardHome)
+router.get("/:tipo", dashboardSensor);
 
-
-const router = express.Router()
-
-
-
-router.get("/temperatura", temperatura)
-
-
-
-
-export default router
+export default router;

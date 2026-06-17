@@ -1,74 +1,52 @@
-const API = "http://localhost:3000/dashboard/temperatura";
+const API = "http://localhost:3000/dashboard/Temperatura";
 
 Chart.defaults.color = 'white';
 Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.07)';
 
 async function carregarDados(){
 
-
     try {
-
 
         const resposta = await fetch(API);
 
-
         const dados = await resposta.json();
-
 
         console.log(dados);
 
-
-
-        // ===========================
-        // CARDS
-        // ===========================
-
+//Cards
 
         document.getElementById("totalEquipamentos").innerHTML =
         dados.cards[0].equipamentos ?? 0;
 
-
         document.getElementById("totalSensores").innerHTML =
         dados.cards[0].sensores ?? 0;
-
 
         document.getElementById("totalAlertas").innerHTML =
         dados.cards[0].alertas ?? 0;
 
-
         document.getElementById("totalCriticos").innerHTML =
         dados.cards[0].criticos ?? 0;
 
+//Gráficos
 
-
-
-        // ===========================
-        // GRÁFICOS
-        // ===========================
-
-
-        graficoTemperatura(
-            dados.temperatura
+        graficoPressao(
+            dados.sensor
         );
-
 
         graficoAlertas(
             dados.alertas
         );
 
-
         graficoMedia(
             dados.media
         );
-
 
         graficoEquipamentos(
             dados.equipamentos
         );
 
-
-
     }
+
     catch(erro){
 
         console.log(
@@ -78,22 +56,11 @@ async function carregarDados(){
 
     }
 
-
 }
 
+//Gráfico Linha
 
-
-
-
-
-
-// =================================
-// GRÁFICO LINHA TEMPERATURA
-// =================================
-
-
-function graficoTemperatura(dados){
-
+function graficoPressao(dados){
 
     new Chart(
 
@@ -103,67 +70,41 @@ function graficoTemperatura(dados){
 
         type:"line",
 
-
         data:{
-
 
             labels:
 
             dados.map(item=>item.data),
 
-
-
             datasets:[{
 
-                label:"Temperatura °C",
-
+                label:"Pressão",
 
                 data:
 
                 dados.map(item=>item.valor),
 
-
                 borderWidth:2
 
             }]
 
-
         },
-
 
         options:{
 
-
             responsive:false
 
-
         }
-
 
         }
 
     );
 
-
 }
 
-
-
-
-
-
-
-
-// =================================
-// GRÁFICO PIZZA ALERTAS
-// =================================
-
+//Gráfico Pizza
 
 function graficoAlertas(dados){
-
-
-
-    // remove valores nulos
 
     dados = dados.filter(item =>
 
@@ -172,80 +113,48 @@ function graficoAlertas(dados){
 
     );
 
-
-
-
-
     new Chart(
 
         document.getElementById("graficoAlertas"),
 
         {
 
-
         type:"pie",
 
-
         data:{
-
 
             labels:
 
             dados.map(item=>item.nivel_alerta),
 
-
-
             datasets:[{
-
 
                 data:
 
                 dados.map(item=>item.quantidade),
 
-
                 borderWidth:1
-
 
             }]
 
-
         },
-
-
 
         options:{
 
-
             responsive:false
 
-
         }
 
-
         }
-
 
     );
-
 
 }
 
 
-
-
-
-
-
-
-
-// =================================
-// GRÁFICO MÉDIA POR EQUIPAMENTO
-// =================================
-
+//Gráfico Média
 
 function graficoMedia(dados){
-
-
 
     new Chart(
 
@@ -253,77 +162,42 @@ function graficoMedia(dados){
 
         {
 
-
         type:"bar",
 
-
-
         data:{
-
 
             labels:
 
             dados.map(item=>item.nome_equipamento),
 
-
-
-
             datasets:[{
 
-
-                label:"Média Temperatura",
-
-
+                label:"Média Pressão",
 
                 data:
 
                 dados.map(item=>item.media),
 
-
-
                 borderWidth:1
-
 
             }]
 
-
         },
 
-
-
         options:{
-
-
             responsive:false
 
-
         }
 
-
         }
-
 
     );
 
-
 }
 
-
-
-
-
-
-
-
-
-// =================================
-// GRÁFICO STATUS EQUIPAMENTOS
-// =================================
-
+//Gráfico Status
 
 function graficoEquipamentos(dados){
-
-
 
     new Chart(
 
@@ -331,60 +205,35 @@ function graficoEquipamentos(dados){
 
         {
 
-
         type:"doughnut",
 
-
-
         data:{
-
 
             labels:
 
             dados.map(item=>item.status_equipamento),
 
-
-
-
             datasets:[{
-
 
                 data:
 
                 dados.map(item=>item.quantidade),
 
-
-
                 borderWidth:1
-
 
             }]
 
-
         },
 
-
-
         options:{
-
-
             responsive:false
 
-
         }
 
-
         }
-
 
     );
 
-
 }
-
-
-
-
-
 
 carregarDados();

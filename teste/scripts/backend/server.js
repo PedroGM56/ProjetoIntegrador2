@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 
-import dashboardRoutes from "../backend/src/routes/routes.js"
+import dashboardRoutes from "./src/routes/routes.js"
 
 
 const app = express()
