@@ -1,4 +1,6 @@
 const API = "http://localhost:3000/dashboard/home";
+const API_MAQUINAS = "http://localhost:3000/dashboard/maquinas";
+let maquinaSelecionada="";
 
 Chart.register(ChartDataLabels);
 
@@ -151,7 +153,7 @@ function graficoAlertas(dados){
                     item.quantidade
                 ),
 
-                backgroundColor:"#38bdf8",
+                backgroundColor:"rgba(249,115,22,0.8)",
                 borderWidth:1
 
             }]
@@ -253,5 +255,48 @@ function carregarTabela(dados){
 
 
 }
+
+async function carregarMaquinas(){
+
+
+    const resposta =
+    await fetch(API_MAQUINAS);
+    
+    
+    const maquinas =
+    await resposta.json();
+    
+    
+    
+    const select =
+    document.getElementById(
+    "filtroMaquina"
+    );
+    
+    
+    
+    maquinas.forEach(maquina=>{
+    
+    
+    let option =
+    document.createElement("option");
+    
+    
+    option.value =
+    maquina.id_equipamento;
+    
+    
+    option.textContent =
+    maquina.nome_equipamento;
+    
+    
+    select.appendChild(option);
+    
+    
+    
+    });
+    
+    
+    }
 
 carregarHome();
